@@ -1,0 +1,278 @@
+/* homepage.css */
+.home-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Goudy', serif;
+}
+
+/* Left-aligned text content */
+.main-content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;           /* Vertically center the block */
+  justify-content: flex-start;   /* Keep content to the left */
+  padding-left: 5vw;             /* Move content closer to the left edge */
+  position: relative;
+  z-index: 1;
+}
+
+
+.home-content-wrapper {
+  max-width: 1400px;
+  width: 100%;
+  top: 10%;
+}
+
+.text-content {
+               /* Slightly narrower for more left alignment */
+  min-width: 320px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;       /* Vertically center text inside the block */
+  align-items: flex-start;       /* Keep content on the left side */
+  text-align: center;            /* Center the text inside the container */
+  height: 60vh;                  /* Helps with vertical centering */
+}
+
+
+
+/* Add these to your existing homepage.css */
+.rotating-mandala-back {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 200vmin;
+  height: 200vmin;
+  opacity: 0.5;
+  z-index: -1;
+  animation: mandalaSpin 60s linear infinite;
+  pointer-events: none;
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,1) 60%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,1) 60%
+  );
+}
+
+.rotating-mandala {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 120vmin;
+  height: 120vmin;
+
+  z-index: 0;
+  animation: mandalaSpin 60s linear infinite reverse;
+  pointer-events: none;
+  filter: brightness(1.1);
+}
+
+@keyframes mandalaSpin {
+  from { transform: translate(50%, -50%) rotate(0deg); }
+  to { transform: translate(50%, -50%) rotate(360deg); }
+}
+
+
+
+/* Typography */
+
+
+
+
+.brand-name {
+  font-family: 'Goudy', sans-serif;
+  font-size: 5rem;
+  color: #B2914E;
+  animation: fadeIn 2s ease-in-out;
+  margin-bottom: 0;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-left: 0;            /* Remove left margin for true centering */
+}
+
+
+.brand-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: #B2914E;
+  animation: fadeIn 2s ease-in-out;
+  letter-spacing: 2px;
+  margin-top: 0;
+  padding-bottom: 4rem;
+  font-weight: 400;
+}
+
+.main-tagline {
+   animation: fadeIn 2s ease-in-out;
+  font-size: 1.3rem;
+  font-family: "SackersGothic";
+  text-align: center;        /* Center text inside their blocks */
+  margin-left: 0;            /* Remove left margin for true centering */
+}
+
+.product-highlights {
+  animation: fadeIn 2s ease-in-out;
+  font-family: "SackersGothic";
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #fcebb5;
+  padding-top: 4rem;
+  letter-spacing: 1.5px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Breakpoints */
+/* Small Desktops (1280px) */
+@media (max-width: 1280px) {
+
+  .main-content {
+    padding-left: 4vw;
+  }
+  .brand-name {
+    font-size: 3rem;
+  }
+  
+  .brand-sub {
+    font-size: 1rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .main-tagline {
+    font-size: 1rem;
+  }
+  
+  .product-highlights {
+    font-size: 1rem;
+    padding-top: 1.5rem;
+  }
+  
+  .rotating-mandala-back {
+    width: 150vmin;
+    height: 150vmin;
+  }
+  
+  .rotating-mandala {
+    width: 90vmin;
+    height: 90vmin;
+  }
+}
+
+/* Tablets (768px) */
+@media (max-width: 834px) {
+  .main-content {
+    padding-left: 3vw;
+  }
+  
+  .text-content {
+    width: 70%;
+    height: 70vh;
+  }
+  
+  .brand-name {
+    font-size: 4rem;
+    
+  }
+  
+  .brand-sub {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  .main-tagline {
+    font-size: 1.2rem;
+  }
+  
+  .product-highlights {
+    font-size: 1.2rem;
+    padding-top: 1rem;
+  }
+  
+  .rotating-mandala-back {
+    width: 120vmin;
+    height: 120vmin;
+    opacity: 0.4;
+  }
+  
+  .rotating-mandala {
+    width: 70vmin;
+    height: 70vmin;
+  }
+}
+
+/* Mobile Phones (480px) */
+@media (max-width: 480px) {
+  .main-content {
+    padding-left: 5vw;
+    justify-content: center;
+  }
+  
+  .text-content {
+    width: 90%;
+    height: auto;
+    min-width: unset;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .brand-name {
+    font-size: 3rem;
+    text-align: center;
+  }
+  
+  .brand-sub {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .main-tagline {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .product-highlights {
+    font-size: 0.9rem;
+    padding-top: 0.8rem;
+    text-align: center;
+  }
+  
+  .rotating-mandala-back {
+    width: 70vmin;
+    height: 70vmin;
+    opacity: 0.3;
+  }
+  
+  .rotating-mandala {
+    width: 50vmin;
+    height: 50vmin;
+  }
+}
+
+/* Small Mobile Devices (<= 360px) */
+@media (max-width: 360px) {
+  .brand-name {
+    font-size: 2.5rem;
+  }
+  
+  .brand-sub {
+    font-size: 1rem;
+  }
+  
+  .main-tagline, .product-highlights {
+    font-size: 0.8rem;
+  }
+}

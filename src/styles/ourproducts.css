@@ -1,0 +1,242 @@
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.our-products-page {
+  position: relative;
+  padding-top: 120px;
+  color: white;
+  font-family: 'Goudy', serif;
+}
+
+.rotating-mandala-background {
+  position: fixed;
+  top: calc(50% + 60px);
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+  animation: spin 80s linear infinite;
+}
+
+.rotating-mandala-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ourproducts-hero {
+  justify-items: center;
+  text-align: center;
+  padding: 0 8vw;
+  animation: fadeIn 1.2s ease-out both;
+}
+
+.ourproducts-hero h1 {
+  font-size: 2rem;
+  color: #C9A961;
+}
+
+.ourproducts-hero h2 {
+  font-family: 'SackersGothic', sans-serif;
+  font-size: 1.6rem;
+  color: #f4eacc;
+  margin-bottom: 1rem;
+}
+
+.ourproducts-hero p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.products-description {
+  padding: 0 6vw;
+  animation: fadeIn 1.2s ease-out both;
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+.products-description h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #C9A961;
+  font-family: 'SackersGothic', serif;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.products-description ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.products-description li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.products-grid-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ourproducts-grid-section {
+  text-align: center;
+  padding: 0 6vw;
+  animation: fadeIn 1.2s ease-out both;
+  margin-top: 2rem;
+}
+
+.ourproducts-grid-section h3 {
+  font-size: 1.6rem;
+  font-family: 'SackersGothic', sans-serif;
+  color: #fcebb5;
+  margin-bottom: 2rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-content: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  max-width: 200px;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+}
+
+.grid-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.grid-item p {
+  font-size: 1.1rem;
+  font-family: 'Goudy', serif;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ourproducts-cta {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-family: 'SackersGothic', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #f7f4e3;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .grid-item p {
+    font-size: 1rem;
+  }
+
+  .ourproducts-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .ourproducts-hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .ourproducts-hero p {
+    font-size: 1rem;
+  }
+
+  .products-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-item img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .grid-item p {
+    font-size: 0.95rem;
+  }
+
+  .products-description ul {
+    padding-left: 1rem;
+  }
+}
+
+/* Fix grid center on ultrawide screens */
+@media (min-width: 2000px) {
+  .products-grid {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .products-description {
+        padding: 0 26vw;
+        font-size:  1.4rem;
+  }
+
+ .ourproducts-hero p {
+    width: 60%;
+    font-size: 1.4rem;
+  }
+
+  .ourproducts-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .ourproducts-hero h2 {
+    font-size: 1.4rem;
+  } 
+
+  .products-grid{
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); ;
+  }
+
+  .grid-item img {
+        width: 120px;
+        height: 120px;
+    }
+}

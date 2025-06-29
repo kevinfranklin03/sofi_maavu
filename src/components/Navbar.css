@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+}
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #F2E9CC;
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  max-width: 100px;
+}
+
+.logo-circle {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.navbar-item {
+  font-size: 1rem;               /* ⬅️ Increase font size */
+  padding: 10px 20px;            /* ⬅️ More clickable space */
+  margin-left: 12px;
+  border-radius: 6px;
+  background-color: #F2E9CC;
+  border: 1px solid #4a2e23;
+  transition: background-color 0.3s ease;
+  letter-spacing: 0.5px;         /* Optional: cleaner spacing */
+}
+
+
+.navbar-item:hover {
+  background-color: #460405;
+}
+
+.navbar-item a {
+  font-size: 1.2rem;               /* Match item font size */
+  text-decoration: none;
+  color: #460405;
+  transition: color 0.3s ease;
+}
+
+.navbar-item:hover a {
+  color: #F2E9CC;
+}
+
+.active-nav-item {
+  background-color: #460405;
+}
+
+.navbar-btn {
+  background-color: #F2E9CC;
+  color: #460405;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  margin-left: 12px;
+  border: 1px solid #460405;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-btn:hover {
+  color: #F2E9CC;
+  background-color: #460405;
+  transform: scale(1.05);
+}
+
+.active-nav-item {
+  background-color: #460405 !important;
+  color: bisque !important;
+}
+
+
+.active-nav-item a {
+  color: bisque;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  z-index: 1100;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+}
+
+.bar {
+  width: 28px;
+  height: 3px;
+  background-color: #460405;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Hamburger animation (optional) */
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 975px) {
+  .navbar-inner {
+    padding: 0 1rem;
+  }
+
+  .navbar-list {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .mobile-nav.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70vw;
+    max-width: 320px;
+    height: 100vh;
+    background: #F2E9CC;
+    z-index: 1099;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.15);
+    padding-top: 4rem;
+    align-items: flex-start;
+    transition: transform 0.3s;
+  }
+
+  .mobile-nav.active .navbar-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 2rem;
+  }
+
+  .mobile-nav.active .navbar-item {
+    margin: 1rem 0;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+  }
+
+  .navbar-btn {
+    margin: 1rem 0 0 0;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 1281px) {
+  .navbar-item {
+    font-size: 0.95rem;
+    padding: 6px 14px;
+  }
+  .navbar-item a {
+    font-size: 1rem;
+  }
+  .navbar-btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+  .mobile-nav.active {
+    width: 100vw;
+    max-width: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .mobile-nav.active .navbar-list {
+    padding-left: 1rem;
+  }
+}

@@ -1,0 +1,228 @@
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Page Container */
+.whyus-page {
+  position: relative;
+  background: radial-gradient(circle, #044133 0%, #0e1d15 100%);
+  color: white;
+  overflow: hidden;
+  padding-top: 120px; /* space for navbar */
+}
+
+/* Mandala Background */
+.rotating-mandala-background {
+  position: fixed;
+  top: calc(50% + 60px);
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+  animation: spin 80s linear infinite;
+}
+
+.rotating-mandala-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Hero Section Full Width */
+.whyus-hero {
+  text-align: center;
+  max-width: 100%;
+  padding: 1rem 8vw;
+  animation: fadeInUp 2.2s ease-out both;
+}
+
+.whyus-hero h1 {
+  font-family: 'Goudy', serif;
+  color: #C9A961;
+  font-size: 2rem;
+}
+
+.whyus-hero h2 {
+  font-family: 'SackersGothic', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #f4eacc;
+  margin-bottom: 0;
+}
+
+.whyus-hero p {
+  font-size: 1.1rem;
+  font-family: 'Goudy', sans-serif;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+/* Layout Container */
+.whyus-layout {
+ /* background-color: #0C2118; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding:0 5vw;
+  flex-wrap: nowrap;
+  margin: 0 3vw;
+  z-index: 1;
+}
+
+/* Left Section */
+.whyus-left {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  animation: fadeInUp 2.2s ease-out both;
+}
+
+.whyus-left h3 {
+  font-size: 1.2rem;
+  color: #fcebb5;
+  font-family: 'SackersGothic', sans-serif;
+}
+
+.whyus-left ul {
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.whyus-left li {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+  font-family: 'Goudy', sans-serif;
+}
+
+/* Right Section */
+.whyus-right {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  animation: fadeInUp 2.2s ease-out both;
+}
+
+.whyus-image {
+  max-width: 90%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA Bottom Section */
+.whyus-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  font-family: 'SackersGothic', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #f7f4e3;
+}
+
+/* 2K Screens and Larger */
+@media (min-width: 2000px) {
+  .rotating-mandala-background {
+    width: 1000px;
+    height: 1000px;
+  }
+
+  .whyus-layout {
+ /* background-color: #0C2118; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding:0 20vw;
+  flex-wrap: nowrap;
+  margin: 0 3vw;
+  z-index: 1;
+}
+
+  .whyus-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .whyus-hero h2 {
+    font-size: 2rem;
+  }
+
+  .whyus-hero p,
+  .whyus-left li {
+    font-size: 1.3rem;
+  }
+
+  .whyus-cta {
+    font-size: 1.4rem;
+    padding: 0;
+  }
+}
+
+/* Tablets and Mobile */
+@media (max-width: 1024px) {
+  .whyus-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 2rem 5vw;
+  }
+
+  .whyus-left,
+  .whyus-right {
+    max-width: 100%;
+    animation: fadeIn 1.2s ease-out both;
+  }
+
+  .whyus-left ul {
+    text-align: left;
+    padding-left: 2rem;
+  }
+
+  .rotating-mandala-background {
+    width: 550px;
+    height: 550px;
+    top: 55%;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .whyus-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .whyus-hero h2 {
+    font-size: 1.2rem;
+  }
+
+  .rotating-mandala-background {
+    width: 450px;
+    height: 450px;
+  }
+
+  .whyus-cta {
+    font-size: 1.1rem;
+  }
+}
