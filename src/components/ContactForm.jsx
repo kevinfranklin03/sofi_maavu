@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import Icon from './Icon';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
@@ -32,7 +33,7 @@ export default function ContactForm() {
     return <div className="enquiry-form">
       <h3>A little hello goes a long way.</h3>
       <p>For batter availability, customised quantities, and bulk supply, get in touch with our team by email.</p>
-      <a className="btn" href="mailto:ammananafoodschennai@gmail.com">Email our team <span aria-hidden="true">↗</span></a>
+      <a className="btn" href="mailto:ammananafoodschennai@gmail.com">Email our team <span aria-hidden="true"><Icon /></span></a>
       <p className="privacy-note">Online form enquiries will be available once our email setup is complete.</p>
     </div>;
   }
@@ -47,7 +48,7 @@ export default function ContactForm() {
         <div className="field"><label htmlFor="contact-number">Contact number</label><input id="contact-number" type="tel" name="contact" autoComplete="tel" placeholder="Your phone number" required maxLength={30} pattern="(?=(?:\D*\d){7})[+0-9\(\) .\-]{7,30}" title="Enter a phone number with at least 7 digits and up to 30 characters." value={formData.contact} onChange={handleInputChange} /></div>
       </div>
       <div className="field"><label htmlFor="contact-message">Your message</label><textarea id="contact-message" name="message" rows="5" required maxLength={2000} placeholder="The batter you love, the quantity you need, or anything you’d like to ask…" value={formData.message} onChange={handleInputChange} /></div>
-      <div className="form-bottom"><span className="character-count">{formData.message.length} / 2,000</span><button className="btn" type="submit" disabled={status === 'sending' || status === 'success'}>{status === 'sending' ? 'Sending…' : status === 'success' ? 'Enquiry sent' : 'Send enquiry'} <span aria-hidden="true">↗</span></button></div>
+      <div className="form-bottom"><span className="character-count">{formData.message.length} / 2,000</span><button className="btn" type="submit" disabled={status === 'sending' || status === 'success'}>{status === 'sending' ? 'Sending…' : status === 'success' ? 'Enquiry sent' : 'Send enquiry'} <span aria-hidden="true"><Icon /></span></button></div>
     </fieldset>
     <div className={`form-feedback ${status}`} role={status === 'error' ? 'alert' : 'status'} aria-live="polite">{feedback}</div>
     <p className="privacy-note">Your details are only used to respond to your enquiry.</p>

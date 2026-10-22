@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Icon from './Icon';
 import logo from '../assets/logo-transparent.png';
 import './Navbar.css';
 
@@ -51,7 +52,7 @@ export default function Navbar() {
       <ul className={`nav-links ${isOpen ? 'is-open' : ''}`} id="primary-menu">
         {items.map(([id, label]) => <li key={id}><a href={`#${id}`} aria-current={active === id ? 'location' : undefined}
           onClick={() => select(id)}>{label}</a></li>)}
-        <li><a href="#contact" className="btn nav-cta" aria-current={active === 'contact' ? 'location' : undefined} onClick={() => select('contact')}>Let’s talk <span aria-hidden="true">↗</span></a></li>
+        <li><a href="#contact" className="btn nav-cta" aria-current={active === 'contact' ? 'location' : undefined} onClick={() => select('contact')}>Let’s talk <span aria-hidden="true"><Icon /></span></a></li>
       </ul>
     </nav>
   </header>;
