@@ -28,6 +28,14 @@ export default function ContactForm() {
       setFeedback(error.name === 'AbortError' ? 'Delivery is taking longer than expected. We could not confirm it; please email us before retrying.' : error.message === 'Failed to fetch' ? 'Unable to connect. Check your connection and try again. Your message is still here.' : error.message);
     } finally { clearTimeout(timeout); sending.current = false; }
   };
+  if (process.env.REACT_APP_STATIC_HOST === 'true') {
+    return <div className="enquiry-form">
+      <h3>A little hello goes a long way.</h3>
+      <p>For batter availability, customised quantities, and bulk supply, get in touch with our team by email.</p>
+      <a className="btn" href="mailto:ammananafoodschennai@gmail.com">Email our team <span aria-hidden="true">↗</span></a>
+      <p className="privacy-note">Online form enquiries will be available once our email setup is complete.</p>
+    </div>;
+  }
   return <form className="enquiry-form" onSubmit={handleSubmit} aria-busy={status === 'sending'} aria-label="Send an enquiry">
     <h3>A little hello goes a long way.</h3>
     <p>Tell us what you need, and we’ll get back to you using your contact number.</p>

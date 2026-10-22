@@ -21,7 +21,7 @@ test('visitors can explore products and reach the enquiry form', () => {
   expect(screen.getByText('Vadai Batter')).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Enquire about dosa batter' })).toHaveAttribute('href', '#contact');
   expect(screen.getByRole('button', { name: 'Send enquiry' })).toBeInTheDocument();
-  expect(document.title).toBe('Amma Nana Foods | Fresh Batter, Familiar Comfort');
+  expect(document.title).toBe('Amma Nana Foods | Fresh Dosa & Idly Batter');
 });
 
 test('mobile menu supports dismissal and closes on navigation', () => {

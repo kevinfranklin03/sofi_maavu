@@ -6,7 +6,7 @@ import idly from '../assets/idli.png';
 import paniyaram from '../assets/paniyaram.png';
 import aapam from '../assets/appam.png';
 import vadai from '../assets/vada.png';
-import batter from '../assets/batter.png';
+import kitchenHero from '../assets/kitchen-hero.png';
 import founder from '../assets/sofi.jpg';
 import signature from '../assets/signature.png';
 import mandala from '../assets/mandela.png';
@@ -42,29 +42,22 @@ export default function LandingPage() {
   return <>
     <Navbar />
     <main id="main-content" tabIndex={-1}>
-      <section className="hero" id="home" aria-labelledby="hero-title" tabIndex={-1}>
-        <img className="hero-mandala" src={mandala} alt="" aria-hidden="true" />
+      <section className="hero hero-cinematic" id="home" aria-labelledby="hero-title" tabIndex={-1}>
+        <div className="hero-backdrop" aria-hidden="true"><img src={kitchenHero} alt="" fetchPriority="high" /></div>
         <div className="shell hero-grid">
           <div className="hero-copy">
             <p className="eyebrow"><span className="little-line" />FROM OUR KITCHEN TO YOURS</p>
             <h1 id="hero-title">Good mornings<br />start with<br /><em>better batter.</em></h1>
-            <p className="hero-description">A little tradition. A lot of care. Fresh, natural batters made the way Amma and Nana would — for food that feels like home.</p>
+            <p className="hero-description">A little tradition. A lot of care. Fresh, natural batters made the way Amma and Nana would, for food that feels like home.</p>
             <div className="hero-actions">
               <a className="btn" href="#products">Explore our batters <span aria-hidden="true">↗</span></a>
               <a className="btn btn-outline" href="#contact">Enquire about bulk orders <span aria-hidden="true">↗</span></a>
             </div>
             <div className="hero-footnote"><span className="leaf-mark" aria-hidden="true">✳</span><span>Simple ingredients.<br /><strong>Nothing unnecessary.</strong></span></div>
           </div>
-          <div className="hero-visual">
-            <div className="hero-photo"><img src={batter} alt="Fresh batter in a ceramic bowl, ready for your kitchen" fetchPriority="high" /></div>
-            <div className="round-note"><span>Made fresh.</span><em>Made with love.</em><span aria-hidden="true">✳</span></div>
-            <div className="photo-caption"><span>THE AMMA NANA PROMISE</span><span>Tradition you can taste.</span></div>
-          </div>
         </div>
-        <a className="scroll-cue" href="#products"><span>GOOD FOOD STARTS HERE</span><span aria-hidden="true">↓</span></a>
+        <aside className="custom-batter-strip" aria-label="Customised batter"><div className="shell"><p>Customised for <em>your kitchen.</em></p><span>Your rice-to-dal ratio. Your pack size.</span><a href="#contact">Let’s make it yours <span aria-hidden="true">↗</span></a></div></aside>
       </section>
-
-      <div className="values-strip" aria-label="Our food values"><div className="shell"><span>100% natural</span><i aria-hidden="true">✳</i><span>No preservatives</span><i aria-hidden="true">✳</i><span>No added salt</span><i aria-hidden="true">✳</i><span>Made with care</span></div></div>
 
       <section className="section products-section" id="products" aria-labelledby="products-title" tabIndex={-1}>
         <div className="shell">

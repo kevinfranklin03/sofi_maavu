@@ -23,7 +23,8 @@
     "server": "node --env-file-if-exists=.env.server.local server/index.cjs",
     "test:server": "node --test server/*.test.cjs",
     "serve": "node --env-file-if-exists=.env.server.local server/index.cjs",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node scripts/prerender.cjs",
+    "test:seo": "node --test scripts/seo.test.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,6 +53,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
     "concurrently": "^10.0.6",
     "http-proxy-middleware": "^2.0.10",
     "smtp-server": "^3.20.2"

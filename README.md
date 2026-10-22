@@ -56,3 +56,15 @@ The single page uses fluid grids, shared button and typography styles, a sticky 
 The responsive review covers widths from 280px to 2560px, including both sides of the navigation and grid breakpoints. Links and buttons have a minimum 44px touch height; product actions align within each row, and the smallest screens use a single-column product layout. Full mobile and desktop scroll passes verify that all images and content reveals load.
 
 Business details and product/delivery claims originate from the existing content. Confirm them with the owner before launch.
+
+## Independent static hosting
+
+Cloudflare Pages project: `amma-nana-foods`. Public address: `https://amma-nana-foods.pages.dev`. The project uses Direct Upload; changes pushed to GitHub do not automatically deploy. To update it, run `npm run build` and `npm run test:seo`, zip the contents of `build/` (with `index.html` at the archive root), and upload a new production deployment in the Cloudflare Pages dashboard. The public origin is saved in `.env.production`; this file contains no credentials.
+
+Keep `public/googlef4778944e001d925.html` in future deployments: it is the public Google Search Console ownership verification file for the business account. The Search Console property is the URL prefix `https://amma-nana-foods.pages.dev/`, and its sitemap is `/sitemap.xml`.
+
+The frontend can be hosted on Cloudflare Pages or Netlify. Use `npm run build` as the build command and `build` as the output directory. Use Node 22 or later. No ChatGPT hosting configuration is required.
+
+After the host assigns the public address, set the build environment variable `SITE_URL` to its HTTPS origin (for example, `https://your-site.pages.dev`). The build then generates the canonical URL, absolute social image URLs, sitemap, and robots sitemap entry. Without this setting, it leaves domain-specific SEO metadata unset. Run `npm run test:seo` after building to verify the generated HTML.
+
+Production HTML includes the page content before JavaScript runs. `.env.production` currently enables a static contact panel linking to `ammananafoodschennai@gmail.com`, while email delivery setup is deferred. A static host cannot run the Express SMTP backend. To enable the enquiry form publicly, first deploy a compatible API or integrate the chosen host's form service, then replace this temporary contact panel. Local development continues to use the enquiry API.
