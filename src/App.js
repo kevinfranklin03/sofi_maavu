@@ -22,7 +22,7 @@ function Site() {
     return () => cancelAnimationFrame(frame);
   }, [location.key, location.hash, navigationType]);
 
-  useEffect(() => { document.title = 'Amma Nana Foods | Fresh Dosa & Idly Batter'; }, []);
+  useEffect(() => { document.title = 'Amma Nana Foods | Dosa & Idly Batter in Chennai'; }, []);
 
   const handleSectionLink = event => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

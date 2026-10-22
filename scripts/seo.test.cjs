@@ -16,6 +16,8 @@ test('the production HTML includes readable page content without running JavaScr
 test('canonical, social metadata and structured data use the published domain', () => {
   const html = fs.readFileSync(path.join(build, 'index.html'), 'utf8');
   assert.match(html, /name="robots" content="index,follow/);
+  assert.match(html, /<title>Amma Nana Foods \| Dosa &amp; Idly Batter in Chennai<\/title>/);
+  assert.ok(html.includes('Fresh batter from Sholinganallur, Chennai.'));
   if (origin) {
     assert.ok(html.includes(`rel="canonical" href="${origin}/"`));
     assert.ok(html.includes(`property="og:image" content="${origin}/social-cover.png"`));
@@ -27,6 +29,8 @@ test('canonical, social metadata and structured data use the published domain', 
   const organization = origin ? data['@graph'][0] : data;
   assert.equal(organization.name, 'Amma Nana Foods');
   assert.equal(organization.email, 'ammananafoodschennai@gmail.com');
+  assert.equal(organization.address.addressLocality, 'Chennai');
+  assert.equal(organization.areaServed.name, 'Chennai');
   if (origin) {
     assert.equal(organization.url, `${origin}/`);
     assert.equal(data['@graph'][1].url, `${origin}/`);
