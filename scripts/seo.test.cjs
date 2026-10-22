@@ -9,7 +9,7 @@ const origin = process.env.SITE_URL ? new URL(process.env.SITE_URL).origin : nul
 test('the production HTML includes readable page content without running JavaScript', () => {
   const html = fs.readFileSync(path.join(build, 'index.html'), 'utf8');
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
-  for (const section of ['Dosa Batter', 'Idly Batter', 'Sofica Bharath', 'Hotels &amp; restaurants', 'Email our team']) assert.ok(html.includes(section), section);
+  for (const section of ['Dosa Batter', 'Idly Batter', 'Sofica Bharath', 'Hotels &amp; restaurants', 'Send enquiry']) assert.ok(html.includes(section), section);
   assert.ok(!html.includes('reveal-ready'), 'content should be visible without JavaScript');
 });
 
