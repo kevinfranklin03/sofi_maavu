@@ -10,7 +10,7 @@ import kitchenHero from '../assets/kitchen-hero.png';
 import founder from '../assets/sofi.jpg';
 import signature from '../assets/signature.png';
 import mandala from '../assets/mandela.png';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-transparent.png';
 
 const products = [
   ['Dosa Batter', 'Golden edges. A beautiful crunch.', dosa, '01'],
@@ -111,6 +111,6 @@ export default function LandingPage() {
         <div className="shell contact-grid"><div className="contact-copy reveal"><p className="eyebrow">LET’S MAKE SOMETHING GOOD</p><h2 id="contact-title">Your next great<br />meal starts<br /><em>with a hello.</em></h2><p>A question, a family order, or a kitchen to supply. We’d love to hear what you have in mind.</p><a className="contact-email" href="mailto:ammananafoodschennai@gmail.com">ammananafoodschennai@gmail.com <span aria-hidden="true">↗</span></a><div className="contact-note"><span aria-hidden="true">✳</span><p>Made with tradition.<br />Delivered with care.</p></div></div><div className="reveal"><ContactForm /></div></div>
       </section>
     </main>
-    <footer className="site-footer"><div className="shell footer-top"><a href="#home" className="brand" aria-label="Back to Amma Nana Foods home"><img src={logo} alt="" width="60" height="60" /><span>Amma Nana<small>FRESH BATTER. FAMILIAR COMFORT.</small></span></a><p>Tradition you can taste.<br />Quality you can count on.</p><a href="#home" className="back-top">Back to top <span aria-hidden="true">↑</span></a></div><div className="shell footer-bottom"><span>© {new Date().getFullYear()} Amma Nana Foods</span><span>GSTIN: 33NDVPS4644R1Z</span><span>Made with a little love, every day.</span></div></footer>
+    <footer className="site-footer"><div className="shell footer-top"><a href="#home" className="brand" aria-label="Back to Amma Nana Foods home"><img src={logo} alt="" width="60" height="60" /><span>Amma Nana Foods<small>FRESH BATTER. FAMILIAR COMFORT.</small></span></a><p>Tradition you can taste.<br />Quality you can count on.</p><a href="#home" className="back-top">Back to top <span aria-hidden="true">↑</span></a></div><div className="shell footer-bottom"><span>© {new Date().getFullYear()} Amma Nana Foods</span><span>GSTIN: 33NDVPS4644R1Z</span><span>Made with a little love, every day.</span></div></footer>
   </>;
 }

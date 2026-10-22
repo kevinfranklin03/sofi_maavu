@@ -1,7 +1,7 @@
 .site-header { position: sticky; top: 0; z-index: 50; background: #faf7efed; backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
 .nav-wrap { min-height: 94px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-.brand img { width: 64px; height: 64px; object-fit: contain; }
+.brand img { width: 64px; height: 64px; object-fit: contain; border-radius: 50%; }
 .brand > span { font: 1.65rem/1.1 'Goudy', Georgia, serif; }
 .brand small { display: block; margin-top: 6px; font: 600 .58rem/1.3 var(--sans); letter-spacing: .16em; }
 .nav-links { display: flex; align-items: center; gap: clamp(16px, 2vw, 30px); list-style: none; margin: 0; padding: 0; }
@@ -23,4 +23,4 @@
   .nav-links .btn { margin-top: 8px; }
 }
 @media (max-width: 360px) { .brand > span { font-size: 1.35rem; } .brand small { font-size: .49rem; } .brand { gap: 8px; } .nav-wrap { gap: 12px; } }
-@media (max-width: 300px) { .brand small { display: none; } .brand img { width: 44px; height: 44px; } }
+@media (max-width: 300px) { .brand small { display: none; } .brand img { width: 44px; height: 44px; } .brand > span { font-size: 1.15rem; } }

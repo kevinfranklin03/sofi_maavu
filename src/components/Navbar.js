@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-transparent.png';
 import './Navbar.css';
 
 const items = [['home', 'Home'], ['products', 'Our batters'], ['why-us', 'Our promise'], ['about', 'Our story'], ['who-we-serve', 'Who we serve']];
@@ -43,7 +43,7 @@ export default function Navbar() {
     <nav className="nav-wrap shell" aria-label="Main navigation">
       <a href="#home" className="brand" aria-label="Amma Nana Foods home" onClick={() => select('home')}>
         <img src={logo} alt="" width="64" height="64" />
-        <span>Amma Nana <small>FOODS · MADE WITH CARE</small></span>
+        <span>Amma Nana Foods<small>MADE WITH CARE</small></span>
       </a>
       <button type="button" className={`menu-toggle ${isOpen ? 'is-open' : ''}`} ref={menuButton}
         aria-label={isOpen ? 'Close menu' : 'Open menu'} aria-expanded={isOpen} aria-controls="primary-menu"
