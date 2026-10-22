@@ -1,40 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700');
-@font-face {
-  font-family: 'SackersGothic';
-  src: url('./assets/fonts/sackersgothicstd-light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+@font-face { font-family: 'Goudy'; src: url('./assets/fonts/GOUDOS.TTF') format('truetype'); font-display: swap; }
+:root {
+  --green: #173e32; --green-dark: #103127; --cream: #faf7ef; --paper: #f0ecdf;
+  --gold: #947237; --sage: #e9eee6; --ink: #203e33; --muted: #677167;
+  --line: #1c443220; --gutter: clamp(20px, 5vw, 80px);
+  --sans: 'Segoe UI', Arial, sans-serif;
 }
-@font-face {
-  font-family: 'Goudy';
-  src: url('./assets/fonts/GOUDOS.TTF') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
-
-
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  height: 100%;
-}
-
-
-html, body {
-  height: 100%; /* Ensure both the html and body elements cover the entire height of the viewport */
-  margin: 0;
-  padding: 0; /* Remove default padding */
-}
-
-body {
-  background: radial-gradient(circle, #044133 0%, #0e1d15 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: #F2E9CC;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 1rem/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: #ddc58f; color: var(--green-dark); }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+section[tabindex]:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

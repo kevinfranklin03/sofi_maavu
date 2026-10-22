@@ -1,78 +1,58 @@
-# Getting Started with Create React App
+# Amma Nana Foods
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page fresh-batter website with a product catalogue, brand promise, preparation process, founder story, bulk-supply information, and enquiry form. React frontend, Express API, and server-side SMTP email delivery.
 
+## Run locally
 
-## Video
+Use Node.js 22 or 24 and npm.
 
+```sh
+npm ci
+npm start
+```
 
-https://github.com/user-attachments/assets/24c74398-7f64-4c46-bc65-96f587f670d2
+The frontend runs at http://localhost:3000 and proxies `/api` to http://127.0.0.1:3002. If port 3000 is busy, use PowerShell:
 
+```powershell
+$env:PORT='3001'
+npm start
+```
 
+Both processes start together. No third-party email account is created automatically.
 
-## Available Scripts
+## Configure enquiry delivery
 
-In the project directory, you can run:
+Copy `.env.server.example` to `.env.server.local`. Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_FROM`, `ENQUIRY_TO`, and the SMTP service's `SMTP_USER`/`SMTP_PASS`. Keep credentials in that ignored server file; never put them in a `REACT_APP_` variable or commit them.
 
-### `npm start`
+Use a sender approved by your email service. Port 465 uses implicit TLS; other ports require STARTTLS by default. Leave `SMTP_ALLOW_PLAINTEXT=false` for real delivery. Restart `npm start` after changing server settings. The destination is configured only on the server; visitors cannot change it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`POST /api/enquiries` accepts `{ name, contact, message, website: '' }`. It validates fields, limits request size and submission rate, and reports success only after the SMTP server accepts the email. SMTP acceptance does not guarantee delivery to the recipient's inbox. Missing settings return 503; SMTP failures return 502. The form preserves the message for retry and never opens an email app.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`GET /api/health` reports whether the API is running and SMTP settings are present. It does not expose credentials or verify an SMTP connection.
 
-### `npm test`
+## Check and build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm test -- --watchAll=false
+npm run test:server
+npm run build
+```
 
-### `npm run build`
+The backend suite performs an actual SMTP transaction against an isolated local test server. It also checks validation, request limits, rate limiting, and delivery failures. No test emails are sent externally.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For production, build first, configure `.env.server.local` (or runtime environment variables), and run:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```powershell
+$env:NODE_ENV='production'
+npm run serve
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The API serves `build/` and client-side routes on port 3002. Deploy behind HTTPS; set `API_HOST` to the interface required by your host. If a trusted reverse proxy sits in front, set `TRUST_PROXY_HOPS` to its exact hop count. The rate limit is per process; multiple instances need a shared rate-limit store.
 
-### `npm run eject`
+## Responsive interface
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The single page uses fluid grids, shared button and typography styles, a sticky section menu, and subtle one-time scroll reveals. Old URLs such as `/products` and `/contact` redirect to the matching anchor on the home page. Product links scroll to the enquiry form without losing entered details. Section clicks use one scroll handler and move keyboard focus to the destination; deep links and browser history restore instantly. Inputs use 16px text, support autofill, and expose pending, success, and error states to assistive technology. The menu supports Escape and outside-click dismissal, scrolls in short landscape viewports, and closes when resized to desktop. Reduced-motion preferences disable smooth scrolling and reveal animations. Content stays visible when IntersectionObserver is unavailable, and keyboard focus immediately reveals interactive content.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The responsive review covers widths from 280px to 2560px, including both sides of the navigation and grid breakpoints. Links and buttons have a minimum 44px touch height; product actions align within each row, and the smallest screens use a single-column product layout. Full mobile and desktop scroll passes verify that all images and content reveals load.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Business details and product/delivery claims originate from the existing content. Confirm them with the owner before launch.
