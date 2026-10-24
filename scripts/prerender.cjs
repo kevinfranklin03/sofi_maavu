@@ -48,8 +48,28 @@ if (process.env.SITE_URL) {
   html = html.replace(/<script type="application\/ld\+json">(.*?)<\/script>/s, (_, json) => {
     const organization = { ...JSON.parse(json), '@id': `${canonical}#organization`, url: canonical, logo: `${origin}/brand-logo.png` };
     const website = { '@type': 'WebSite', '@id': `${canonical}#website`, name: organization.name, url: canonical, inLanguage: 'en', publisher: { '@id': organization['@id'] } };
+    const service = {
+      '@type': 'Service', '@id': `${canonical}#batter-supply`,
+      name: 'Idli and dosa batter supply in Chennai',
+      serviceType: 'Customised batter supply for homes and professional kitchens',
+      description: 'Idli and dosa batter prepared in Sholinganallur, Chennai, with customised rice-to-dal ratios and pack sizes for homes, hotels, restaurants, caterers, hospitals and PG kitchens. Enquire about quantities, quotations and delivery availability.',
+      url: `${canonical}#bulk-supply`,
+      provider: { '@id': organization['@id'] },
+      areaServed: { '@type': 'City', name: 'Chennai' },
+      mainEntityOfPage: { '@id': `${canonical}#webpage` },
+    };
+    const webpage = {
+      '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical,
+      name: 'Amma Nana Foods | Idli & Dosa Batter Supplier in Chennai',
+      description: 'Fresh idli and dosa batter from Amma Nana Foods in Sholinganallur, Chennai. Explore our batters and enquire about customised bulk kitchen supply.',
+      inLanguage: 'en', isPartOf: { '@id': website['@id'] },
+      publisher: { '@id': organization['@id'] },
+      about: { '@id': service['@id'] },
+      mainEntity: { '@id': service['@id'] },
+      primaryImageOfPage: { '@type': 'ImageObject', url: `${origin}/social-cover.png` },
+    };
     delete organization['@context'];
-    return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [organization, website] }).replaceAll('<', '\\u003c')}</script>`;
+    return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [organization, website, service, webpage] }).replaceAll('<', '\\u003c')}</script>`;
   });
   fs.writeFileSync(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${canonical}</loc></url></urlset>`);
   fs.appendFileSync(path.join(output, 'robots.txt'), `\nSitemap: ${origin}/sitemap.xml\n`);

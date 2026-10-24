@@ -3,7 +3,7 @@ import Icon from './Icon';
 import logo from '../assets/logo-transparent.png';
 import './Navbar.css';
 
-const items = [['home', 'Home'], ['products', 'Our batters'], ['why-us', 'Our promise'], ['about', 'Our story'], ['who-we-serve', 'Who we serve']];
+const items = [['home', 'Home'], ['products', 'Our batters'], ['why-us', 'Our promise'], ['about', 'Our story'], ['bulk-supply', 'Bulk supply']];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

@@ -21,7 +21,7 @@ test('visitors can explore products and reach the enquiry form', () => {
   expect(screen.getByText('Vadai Batter')).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Enquire about dosa batter' })).toHaveAttribute('href', '#contact');
   expect(screen.getByRole('button', { name: 'Send enquiry' })).toBeInTheDocument();
-  expect(document.title).toBe('Amma Nana Foods | Dosa & Idly Batter in Chennai');
+  expect(document.title).toBe('Amma Nana Foods | Idli & Dosa Batter Supplier in Chennai');
 });
 
 test('mobile menu supports dismissal and closes on navigation', () => {
@@ -34,6 +34,18 @@ test('mobile menu supports dismissal and closes on navigation', () => {
   fireEvent.click(screen.getByRole('link', { name: 'Our batters' }));
   expect(screen.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'false');
   expect(screen.getByRole('link', { name: 'Our batters' })).toHaveAttribute('aria-current', 'location');
+});
+
+test('bulk supply navigation and quote links preserve an existing enquiry draft', async () => {
+  render(<App />);
+  fillEnquiry();
+  fireEvent.click(screen.getByRole('link', { name: 'Enquire about bulk orders' }));
+  await waitFor(() => expect(document.getElementById('bulk-supply')).toHaveFocus());
+  expect(window.location.hash).toBe('#bulk-supply');
+  fireEvent.click(screen.getByRole('link', { name: 'Request a bulk quote' }));
+  await waitFor(() => expect(document.getElementById('contact')).toHaveFocus());
+  expect(screen.getByLabelText('Your message')).toHaveValue('Dosa & idly, please.\n20 kg?');
+  expect(global.fetch).not.toHaveBeenCalled();
 });
 
 test('submits the enquiry to the API and waits for delivery before reporting success', async () => {
@@ -90,7 +102,7 @@ test('enquiry rejects whitespace and invalid contact numbers before making reque
 
 test.each([
   ['/about', '#about'], ['/products', '#products'], ['/why-us', '#why-us'],
-  ['/who-we-serve', '#who-we-serve'], ['/contact', '#contact'],
+  ['/who-we-serve', '#who-we-serve'], ['/bulk-supply', '#bulk-supply'], ['/contact', '#contact'],
 ])('legacy URL %s opens the matching section on the single page', async (path, hash) => {
   window.history.replaceState({}, '', path);
   render(<App />);

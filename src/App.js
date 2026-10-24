@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate, useNa
 import LandingPage from './pages/LandingPage';
 import './App.css';
 
-const sections = { '/about': 'about', '/products': 'products', '/why-us': 'why-us', '/who-we-serve': 'who-we-serve', '/contact': 'contact' };
+const sections = { '/about': 'about', '/products': 'products', '/why-us': 'why-us', '/who-we-serve': 'who-we-serve', '/bulk-supply': 'bulk-supply', '/contact': 'contact' };
 
 function Site() {
   const location = useLocation();
@@ -22,7 +22,7 @@ function Site() {
     return () => cancelAnimationFrame(frame);
   }, [location.key, location.hash, navigationType]);
 
-  useEffect(() => { document.title = 'Amma Nana Foods | Dosa & Idly Batter in Chennai'; }, []);
+  useEffect(() => { document.title = 'Amma Nana Foods | Idli & Dosa Batter Supplier in Chennai'; }, []);
 
   const handleSectionLink = event => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

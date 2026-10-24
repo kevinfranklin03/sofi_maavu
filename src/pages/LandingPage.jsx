@@ -52,7 +52,7 @@ export default function LandingPage() {
             <p className="hero-description">A little tradition. A lot of care. Fresh, natural batters made the way Amma and Nana would, for food that feels like home.</p>
             <div className="hero-actions">
               <a className="btn" href="#products">Explore our batters <span aria-hidden="true"><Icon /></span></a>
-              <a className="btn btn-outline" href="#contact">Enquire about bulk orders <span aria-hidden="true"><Icon /></span></a>
+              <a className="btn btn-outline" href="#bulk-supply">Enquire about bulk orders <span aria-hidden="true"><Icon /></span></a>
             </div>
             <div className="hero-footnote"><span className="leaf-mark" aria-hidden="true"><Icon name="sunburst" /></span><span>Simple ingredients.<br /><strong>Nothing unnecessary.</strong></span></div>
           </div>
@@ -101,10 +101,52 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="section serve-section" id="who-we-serve" aria-labelledby="serve-title" tabIndex={-1}>
-        <div className="shell"><div className="section-heading reveal"><div><p className="eyebrow">GOOD FOOD. ON A BIGGER SCALE.</p><h2 id="serve-title">For kitchens that<br /><em>bring people together.</em></h2></div><p>Running a busy kitchen? Let us handle the batter. Consistent taste, customised quantities, and free delivery for bulk orders.</p></div>
-          <div className="audience-grid">{audiences.map(([number, title, text]) => <article className="audience-card reveal" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-          <div className="serve-bottom reveal"><p><span className="status-dot" />Supermarkets & online platforms — coming soon.</p><a className="btn btn-outline" href="#contact">Discuss your bulk order <span aria-hidden="true"><Icon /></span></a></div>
+      <section className="section serve-section bulk-section" id="bulk-supply" aria-labelledby="bulk-title" tabIndex={-1}>
+        <div className="shell">
+          <div className="bulk-intro">
+            <div className="bulk-copy reveal">
+              <p className="eyebrow">FROM SHOLINGANALLUR, FOR YOUR KITCHEN</p>
+              <h2 id="bulk-title">Idli &amp; dosa batter<br /><em>supply in Chennai.</em></h2>
+              <p>Amma Nana Foods prepares fresh idli and dosa batter in Sholinganallur, Chennai, for homes and professional kitchens. From a family breakfast to a busy food service, tell us the quantity you need and the way you like your batter.</p>
+              <ul className="bulk-highlights" aria-label="Bulk supply options"><li>Custom rice-to-dal ratios</li><li>Pack sizes to suit your kitchen</li><li>Family and bulk orders</li></ul>
+            </div>
+            <aside className="bulk-quote reveal" aria-labelledby="bulk-quote-title">
+              <span className="bulk-quote-mark" aria-hidden="true"><Icon name="sunburst" /></span>
+              <p className="eyebrow">A LITTLE PLANNING. A BETTER SERVICE.</p>
+              <h3 id="bulk-quote-title">Let’s plan<br /> <em>your next batch.</em></h3>
+              <p>Share your batter, quantity, delivery area and preferred date. We’ll confirm availability, pack options and a quote for your order.</p>
+              <a className="btn" href="#contact">Request a bulk quote <span aria-hidden="true"><Icon /></span></a>
+              <p className="bulk-quote-note">Idli, dosa, paniyaram, aapam and vadai batters.</p>
+            </aside>
+          </div>
+
+          <div className="bulk-audiences" id="who-we-serve" tabIndex={-1} aria-labelledby="serve-title">
+            <div className="bulk-audience-heading reveal"><p className="eyebrow">GOOD FOOD. ON A BIGGER SCALE.</p><h3 id="serve-title">For kitchens that bring people together.</h3></div>
+            <div className="audience-grid">{audiences.map(([number, title, text]) => <article className="audience-card reveal" key={number}><span>{number}</span><h4>{title}</h4><p>{text}</p></article>)}</div>
+          </div>
+
+          <div className="bulk-planning">
+            <div className="bulk-steps reveal">
+              <p className="eyebrow">TELL US WHAT WORKS FOR YOU</p>
+              <h3>A simple start to your supply.</h3>
+              <ol>
+                <li><span aria-hidden="true">01</span><div><h4>Choose your batter</h4><p>Tell us which batters you need, your preferred rice-to-dal ratio and the quantity you use.</p></div></li>
+                <li><span aria-hidden="true">02</span><div><h4>Share your schedule</h4><p>Include your Chennai delivery location and preferred date. For regular supply, tell us how often you need a batch.</p></div></li>
+                <li><span aria-hidden="true">03</span><div><h4>Confirm your order</h4><p>We’ll discuss pack sizes, minimum quantities, pricing, delivery arrangements and preparation time before you order.</p></div></li>
+              </ol>
+            </div>
+            <div className="bulk-faq reveal">
+              <p className="eyebrow">BEFORE YOUR FIRST ORDER</p>
+              <h3>A few helpful answers.</h3>
+              {[
+                ['Can you customise the batter?', 'Yes. We customise rice-to-dal ratios and pack sizes. Tell us about your menu and the quantity you need so we can discuss the options for your kitchen.'],
+                ['Where do you supply in Chennai?', 'We are based in Sholinganallur, Chennai. Share your delivery neighbourhood or postcode with your enquiry so we can confirm availability and delivery arrangements for your location.'],
+                ['What is the minimum bulk order and price?', 'Send us the batter type and quantity you need. We will confirm available pack sizes, any minimum order and your quotation before you place an order.'],
+                ['How far ahead should I order?', 'Include your preferred date and whether this is a one-off or regular order. We will confirm preparation time and availability when we discuss your enquiry.'],
+              ].map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true"><Icon name="plus" /></span></summary><p>{answer}</p></details>)}
+              <a className="text-link" href="#contact">Discuss your bulk order <span aria-hidden="true"><Icon /></span></a>
+            </div>
+          </div>
         </div>
       </section>
 
